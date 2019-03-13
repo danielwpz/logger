@@ -44,7 +44,7 @@ describe('koa-logger', function () {
 
   it('should log a request with correct method and url', function (done) {
     request(app.listen()).head('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s'),
           'HEAD',
@@ -62,7 +62,7 @@ describe('koa-logger', function () {
 
   it('should log a 200 response', function (done) {
     request(app.listen()).get('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.green('%s') +
@@ -79,7 +79,7 @@ describe('koa-logger', function () {
 
   it('should log a 301 response', function (done) {
     request(app.listen()).get('/301').expect(301, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -96,7 +96,7 @@ describe('koa-logger', function () {
 
   it('should log a 304 response', function (done) {
     request(app.listen()).get('/304').expect(304, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -113,7 +113,7 @@ describe('koa-logger', function () {
 
   it('should log a 404 response', function (done) {
     request(app.listen()).get('/404').expect(404, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.yellow('%s') +
@@ -130,7 +130,7 @@ describe('koa-logger', function () {
 
   it('should log a 500 response', function (done) {
     request(app.listen()).get('/500').expect(500, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -206,7 +206,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a request with correct method and url', function (done) {
     request(app.listen()).head('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s'),
         'HEAD',
@@ -224,7 +224,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a 200 response', function (done) {
     request(app.listen()).get('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.green('%s') +
@@ -241,7 +241,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a 301 response', function (done) {
     request(app.listen()).get('/301').expect(301, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -258,7 +258,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a 304 response', function (done) {
     request(app.listen()).get('/304').expect(304, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -275,7 +275,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a 404 response', function (done) {
     request(app.listen()).get('/404').expect(404, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.yellow('%s') +
@@ -292,7 +292,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log a 500 response', function (done) {
     request(app.listen()).get('/500').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -368,7 +368,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a request with correct method and url', function (done) {
     request(app.listen()).head('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s'),
         'HEAD',
@@ -386,7 +386,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a 200 response', function (done) {
     request(app.listen()).get('/200').expect(200, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.green('%s') +
@@ -403,7 +403,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a 301 response', function (done) {
     request(app.listen()).get('/301').expect(301, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -420,7 +420,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a 304 response', function (done) {
     request(app.listen()).get('/304').expect(304, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.cyan('%s') +
@@ -437,7 +437,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a 404 response', function (done) {
     request(app.listen()).get('/404').expect(404, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.yellow('%s') +
@@ -454,7 +454,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log a 500 response', function (done) {
     request(app.listen()).get('/500').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('-->') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +

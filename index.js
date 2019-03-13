@@ -57,7 +57,7 @@ function dev (opts) {
   return async function logger (ctx, next) {
     // request
     const start = Date.now()
-    print('  ' + chalk.gray('<--') +
+    print('  ' + chalk.gray('-->') +
       ' ' + chalk.bold('%s') +
       ' ' + chalk.gray('%s'),
         ctx.method,
@@ -128,7 +128,7 @@ function log (print, ctx, start, len, err, event) {
 
   const upstream = err ? chalk.red('xxx')
     : event === 'close' ? chalk.yellow('-x-')
-    : chalk.gray('-->')
+    : chalk.gray('<--')
 
   print('  ' + upstream +
     ' ' + chalk.bold('%s') +

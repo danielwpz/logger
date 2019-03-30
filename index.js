@@ -91,13 +91,7 @@ function dev (opts) {
       log(print, ctx, start, counter ? counter.length : length, null, event)
     }
 
-    try {
-      await next()
-    } catch (err) {
-      // log uncaught downstream errors
-      log(print, ctx, start, null, err)
-      throw err
-    }
+    await next()
 
   }
 }

@@ -147,7 +147,7 @@ describe('koa-logger', function () {
 
   it('should log middleware error', function (done) {
     request(app.listen()).get('/error').expect(500, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -157,14 +157,14 @@ describe('koa-logger', function () {
           '/error',
           500,
           sinon.match.any,
-          '-')
+          sinon.match.any)
       done()
     })
   })
 
   it('should log a 500 response with boom', function (done) {
     request(app.listen()).get('/500-boom').expect(500, function () {
-      expect(log).to.have.been.calledWith('  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -174,7 +174,7 @@ describe('koa-logger', function () {
           '/500-boom',
           500,
           sinon.match.any,
-          '-')
+          sinon.match.any)
       done()
     })
   })
@@ -309,7 +309,7 @@ describe('koa-logger-transporter-direct', function () {
 
   it('should log middleware error', function (done) {
     request(app.listen()).get('/error').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -319,14 +319,14 @@ describe('koa-logger-transporter-direct', function () {
         '/error',
         500,
         sinon.match.any,
-        '-'])
+        sinon.match.any])
       done()
     })
   })
 
   it('should log a 500 response with boom', function (done) {
     request(app.listen()).get('/500-boom').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -336,7 +336,7 @@ describe('koa-logger-transporter-direct', function () {
         '/500-boom',
         500,
         sinon.match.any,
-        '-'])
+        sinon.match.any])
       done()
     })
   })
@@ -471,7 +471,7 @@ describe('koa-logger-transporter-opts', function () {
 
   it('should log middleware error', function (done) {
     request(app.listen()).get('/error').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -481,14 +481,14 @@ describe('koa-logger-transporter-opts', function () {
         '/error',
         500,
         sinon.match.any,
-        '-'])
+        sinon.match.any])
       done()
     })
   })
 
   it('should log a 500 response with boom', function (done) {
     request(app.listen()).get('/500-boom').expect(500, function () {
-      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.red('xxx') +
+      expect(log).to.have.been.calledWith(sinon.match.string, ['  ' + chalk.gray('<--') +
         ' ' + chalk.bold('%s') +
         ' ' + chalk.gray('%s') +
         ' ' + chalk.red('%s') +
@@ -498,7 +498,7 @@ describe('koa-logger-transporter-opts', function () {
         '/500-boom',
         500,
         sinon.match.any,
-        '-'])
+        sinon.match.any])
       done()
     })
   })

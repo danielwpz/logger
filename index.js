@@ -9,6 +9,7 @@ const humanize = require('humanize-number')
 const bytes = require('bytes')
 const chalk = require('chalk')
 const util = require('util')
+const crypto = require('crypto')
 
 /**
  * Expose logger.
@@ -57,11 +58,14 @@ function dev (opts) {
   return async function logger (ctx, next) {
     // request
     const start = Date.now()
+    ctx.request.rid = crypto.randomBytes(6).toString('hex')
     print('  ' + chalk.gray('-->') +
       ' ' + chalk.bold('%s') +
+      ' ' + chalk.gray('%s') +
       ' ' + chalk.gray('%s'),
         ctx.method,
-        ctx.originalUrl)
+        ctx.originalUrl,
+        ctx.request.rid)
 
 
     // log when the response is finished or closed,
@@ -129,12 +133,14 @@ function log (print, ctx, start, len, err, event) {
     ' ' + chalk.gray('%s') +
     ' ' + chalk[color]('%s') +
     ' ' + chalk.gray('%s') +
+    ' ' + chalk.gray('%s') +
     ' ' + chalk.gray('%s'),
       ctx.method,
       ctx.originalUrl,
       status,
       time(start),
-      length)
+      length,
+      ctx.request.rid)
 }
 
 /**

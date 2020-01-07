@@ -59,13 +59,16 @@ function dev (opts) {
     // request
     const start = Date.now()
     ctx.request.rid = crypto.randomBytes(6).toString('hex')
+
     print('  ' + chalk.gray('-->') +
       ' ' + chalk.bold('%s') +
+      ' ' + chalk.gray('%s') +
       ' ' + chalk.gray('%s') +
       ' ' + chalk.gray('%s'),
         ctx.method,
         ctx.originalUrl,
-        ctx.request.rid)
+        ctx.request.rid,
+        getXForwardedForHeader(ctx))
 
 
     // log when the response is finished or closed,
@@ -134,13 +137,15 @@ function log (print, ctx, start, len, err, event) {
     ' ' + chalk[color]('%s') +
     ' ' + chalk.gray('%s') +
     ' ' + chalk.gray('%s') +
+    ' ' + chalk.gray('%s') +
     ' ' + chalk.gray('%s'),
       ctx.method,
       ctx.originalUrl,
       status,
       time(start),
       length,
-      ctx.request.rid)
+      ctx.request.rid,
+      getXForwardedForHeader(ctx))
 }
 
 /**
@@ -154,4 +159,13 @@ function time (start) {
   return humanize(delta < 10000
     ? delta + 'ms'
     : Math.round(delta / 1000) + 's')
+}
+
+function getXForwardedForHeader (ctx) {
+  let value = ctx.request.headers['x-forwarded-for']
+  if (!value) {
+    value = ''
+  }
+
+  return value
 }

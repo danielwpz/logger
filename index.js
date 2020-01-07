@@ -63,6 +63,7 @@ function dev (opts) {
     print('  ' + chalk.gray('-->') +
       ' ' + chalk.bold('%s') +
       ' ' + chalk.gray('%s') +
+      ' -' +
       ' ' + chalk.gray('%s') +
       ' ' + chalk.gray('%s'),
         ctx.method,
@@ -137,6 +138,7 @@ function log (print, ctx, start, len, err, event) {
     ' ' + chalk[color]('%s') +
     ' ' + chalk.gray('%s') +
     ' ' + chalk.gray('%s') +
+    ' - ' +
     ' ' + chalk.gray('%s') +
     ' ' + chalk.gray('%s'),
       ctx.method,
@@ -165,6 +167,8 @@ function getXForwardedForHeader (ctx) {
   let value = ctx.request.headers['x-forwarded-for']
   if (!value) {
     value = ''
+  } else {
+    value = `[${value}]`
   }
 
   return value

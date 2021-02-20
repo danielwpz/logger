@@ -2,7 +2,7 @@
   "name": "@danielwpz/koa-logger",
   "description": "Logging middleware for koa",
   "repository": "koajs/logger",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "keywords": [
     "koa",
     "middleware",
